@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine's</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js" type="text/javascript"></script>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .choice-container {
+      margin-top: 20%;
+      padding: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-yes {
+      background-color: #28a745;
+    }
+
+    .btn-no {
+      background-color: #dc3545;
+    }
+
+    @media (max-width: 768px) {
+      .choice-container {
+        margin-top: 30%;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .choice-container {
+        margin-top: 40%;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="choice-container" id="choice-container">
+    <p>Do you love me? 💖</p>
+    <button class="btn btn-yes" id="yes-btn">Yes</button>
+    <button class="btn btn-no" id="no-btn">No</button>
+  </div>
+
+  <div id="gallery-container" style="display:none;">
+    <audio class="song" loop autoplay>
+      <source src="lagu.mp3">
+      Your browser isn't invited for super fun audio time.
+    </audio>
+
+    <div id="hedlinecontainer">
+      <div id="shine" style="font-size: 30px; font-weight: bold; color: #ff1493; text-align: center;">Happy Valentine's Day💞</div>
+    </div>
+
+    <div class="gallery" id="gallery">
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
+    const choiceContainer = document.getElementById('choice-container');
+    const galleryContainer = document.getElementById('gallery-container');
+    const gallery = document.getElementById('gallery');
+    const hedlineContainer = document.getElementById('hedlinecontainer');
+
+    
+    const loadImages = () => {
+    for (let i = 1; i <= 25; i++) { 
+      const img = document.createElement('img');
+      img.src = `assets/image/image (${i}).JPG`; 
+      img.alt = 'love you';
+      img.style.maxWidth = '200px'; 
+      img.style.margin = '10px';
+      img.setAttribute('loading', 'lazy'); 
+      gallery.appendChild(img);
+    }
+  };
+
+
+
+    
+    yesBtn.addEventListener('click', () => {
+      choiceContainer.style.display = 'none';
+      galleryContainer.style.display = 'block';
+      hedlineContainer.style.display = 'block'; 
+      loadImages();
+    });
+
+    // Event listener for No button
+    noBtn.addEventListener('click', () => {
+      const randomSize = Math.floor(Math.random() * 30) + 20; 
+      yesBtn.style.fontSize = `${parseInt(yesBtn.style.fontSize || 20) + randomSize}px`;
+      yesBtn.style.padding = `${parseInt(yesBtn.style.padding || 10) + randomSize / 4}px`;
+    });
+  </script>
+</body>
+
+</html>
